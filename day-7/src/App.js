@@ -7,7 +7,6 @@ const App = () => {
   const [toggle, setToggle] = useState(true);
   const [count, setCount] = useState(0);
   const [numFact, setNumFact] = useState("");
-
   useEffect(() => {
     // ComponentDidMount
 

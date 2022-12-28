@@ -5,24 +5,34 @@ import { ACCESS_KEY } from "./config/constants";
 
 const App = () => {
   const [imageList, setImage] = useState([]);
-  useEffect(() => {
+  const [tempimageList, settempImageList] = useState();
+  const [isLoading, setIsLoading] = useState(true)
+  useEffect(() => { 
+
+    document.title = "Image Gallary App"
     axios
       .get(
         `https://api.unsplash.com/photos/?client_id=${ACCESS_KEY}&per_page=30`
       )
-      .then((response) => setImage(response.data));
+      .then((response) => {
+        setImage(response.data);
+        settempImageList(response.data);
+        setIsLoading(false);
+      });
   }, []); 
 
+   
+   const searchImage = (question) =>{
 
-  const searchImage = (question) =>{
-   const searchImageList = imageList.filter(image =>{
-      console.log(image);
-      image.alt_description = image.alt_description === null ? "react":image.alt_description 
-
-      return image.alt_description.includes(question);
-    });
-    setImage(searchImageList);
-
+    if(question === ""){
+      setImage(tempimageList);
+    }else{ 
+      const searchImageList = imageList.filter(image =>{
+        image.alt_description = image.alt_description === null ? "react":image.alt_description
+        return image.alt_description.includes(question);
+      });
+      setImage(searchImageList);
+    }
   };
 
 
@@ -31,16 +41,17 @@ const App = () => {
       <center>
         <input
           type="text"
-          style={{ height: "30px", width: "40%" }}
+          style={{ height: "30px", width: "40%", borderRadius:"6px" }}
           placeholder="Search Image"
           onKeyUp={(e) => searchImage(e.target.value)} 
         ></input>
       </center>
 
+
       <div
         style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}
       >
-        {imageList.map((item) => {
+        {imageList.length > 0 ? imageList.map((item) => {
           return (
             <div key={item.id} style={{ padding: "20px", textAlign: "center" }}>
               <img
@@ -55,7 +66,8 @@ const App = () => {
                 : "react"}
             </div>
           );
-        })}
+        }): 
+        isLoading ? "Loading...": "No Images Found!!"}
       </div>
     </div>
   );
