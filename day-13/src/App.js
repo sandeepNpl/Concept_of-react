@@ -24,6 +24,14 @@ const App = () => {
           </ul>
         </nav>
         <Routes>
+          <Route path ="books">
+            <Route index element={<b>Books</b>} />
+            <Route path="buy">
+              <Route index element={<b>Buy Books</b>}></Route>
+              <Route path="fiction" element={"Buy Fiction Book"}/>
+              <Route path="drama" element={"Buy Drama Book"}/>
+            </Route>
+          </Route>        
           <Route index element={<Homepage />} />
           <Route path="contact" element={<Contact />} />
           <Route path="aboutus" element={<Aboutus />} />
@@ -34,5 +42,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
