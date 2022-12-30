@@ -5,6 +5,7 @@ import Aboutus from "./pages/Aboutus";
 import Contact from "./pages/Contact";
 import PageNotFound from "./pages/pagenotFound";
 import "./App.css";
+import BookDetails  from "./pages/BookDetails";
 
 const App = () => {
   return (
@@ -25,7 +26,8 @@ const App = () => {
         </nav>
         <Routes>
           <Route path ="books">
-            <Route index element={<b>Books</b>} />
+            <Route index element={<b>Books Details</b>} />
+            <Route path=":id/:author" element={<BookDetails/>} />
             <Route path="buy">
               <Route index element={<b>Buy Books</b>}></Route>
               <Route path="fiction" element={"Buy Fiction Book"}/>
