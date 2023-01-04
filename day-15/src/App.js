@@ -1,28 +1,19 @@
-import React, { useReducer} from 'react'
+import React, { useReducer} from 'react';
+import {countReducer} from "./reducer/countReducer"
 const App = () => {
- const reducer = (state,action)=>{
 
-    switch(action){
-      case "Increase":
-        return {count:state.count+1};
-      
-      case "Decrease":
-        return {count:state.count-1};
-
-      case "Double":
-        return {count:state.count+2} ;  
-    }
- }  
+  const ACTION_TYPE ={
     
-
-  const [state, dispatch]= useReducer(reducer,{count:0});
+  }
+ 
+  const [state, dispatch]= useReducer(countReducer,{count:0});
   return (
     <div>
-      <button onClick={()=>{dispatch("Increase")}}>+</button>
+      <button onClick={()=>{dispatch({type:"Increase"})}}>+</button>
       <br/>
-      <button onClick={()=>{dispatch("Decrease")}}>-</button>
+      <button onClick={()=>{dispatch({type:"Decrease"})}}>-</button>
       <br/>
-      <button onClick={()=>{dispatch("Double")}}>+2</button>
+      <button onClick={()=>{dispatch({type:"Double"})}}>+2</button>
       <br/>
       {state.count}
     </div>
