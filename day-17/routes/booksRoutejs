@@ -1,0 +1,23 @@
+import express from 'express'
+
+const router = express.Router()
+
+router.get("/",(req, res)=>{
+
+    //db ma kam gairako hunchham 
+    res.status(200).send("book list");
+});
+
+router.get("/add", (req,res) =>{
+    res.status(200).json({
+        added:"true"
+    })
+});
+
+router.get("/delete", (req, res)=>{
+    res.status(200).json({
+     msg: "deleted"
+    })
+});
+
+export default router;
