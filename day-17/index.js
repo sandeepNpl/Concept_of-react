@@ -1,15 +1,19 @@
-import express from 'express'
+import express from  'express';
+import booksRouter from './routes/booksRoute.js'
 
-import booksRouter from './routes/booksRoute'
+ const app = express();
+ app.use(express.json());
 
-const app = express();
+ app.use((req,res,next)=>{
+   console.log("hello");
+ })
 
-app.get("/", (req, res)=> {
-    res.status(200).send("hello!! Saru")
-});
+ app.get("/",(req,res)=>{
+    res.status(200).send("backend is working")
+ });
 
-app.use("/books", booksRouter)
+ app.use("/books", booksRouter)
 
-app.listen(8000,()=>{
-    console.log("server has started");
-});
+ app.listen(8000, ()=>{
+    console.log("server has started 🚀");
+ })
