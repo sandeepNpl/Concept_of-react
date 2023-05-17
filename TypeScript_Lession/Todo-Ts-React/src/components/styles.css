@@ -1,0 +1,90 @@
+.input{
+    display:flex;
+    width:90%;
+    position:relative;
+    align-items: center;
+}
+.input__box{
+    width:100%;
+    padding:20px 30px;
+    border-radius: 50px;
+    border: none;
+    font-size:20px;
+    box-shadow: inset 0 0 5px black;
+}
+
+.input__box:focus{
+    box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.5);
+    outline:none;
+} 
+
+
+.input__submit{
+    width:50px;
+    height:50px;
+    margin:12px;
+    border-radius:50px;
+    font-size:20px;
+    color:white;
+    border:none;
+    right:0;
+    position:absolute;
+    background-color: rgb(31, 188, 251);
+    box-shadow: 0 0 10px black;
+    transition: 0.2s all;
+}
+
+.input__submit:hover{
+    background-color:rgb(0, 172, 240);
+}
+
+.input__submit:active {
+    transform: scale(0.8);
+    box-shadow: 0 0 5px black;
+}
+
+.todos{
+    display:flex;
+    justify-content: space-evenly;
+    width:90%;
+    flex-wrap: wrap;
+}
+
+.single__todo{
+    display:flex;
+    width: 29.5%;
+    border-radius:5px;
+    background-color: rgb(248, 242, 133);
+    padding:20px;
+    margin-top:15px;
+}
+
+.single__todo__text{
+    flex:1;
+    padding:5px;
+    border:none;
+    font-size: 20px;
+}
+
+.icon{
+    margin-left:10px;
+    font-size:20px;
+    cursor:pointer;
+}
+
+@media (max-width: 800px) {
+    .input{
+        width:95%;
+    }
+    .todos{
+        width:90%;
+    }
+
+    .single__todo{
+        width:100%;
+    }
+
+
+
+    
+}
